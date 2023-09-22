@@ -1,5 +1,5 @@
-[
-    "games:"[
+{
+    "games" : [
         {
             "title": "Assassin's Creed Valhalla",
             "description": "Experience the epic Viking saga in Assassin's Creed Valhalla. Explore a dynamic and beautiful open world as Eivor, a fierce Viking warrior, and lead your clan to glory and prosperity. Engage in intense combat, build alliances, and conquer England in this action-packed adventure.",
@@ -91,4 +91,4 @@
             "image": "https"
         }
     ]
-]
+}
