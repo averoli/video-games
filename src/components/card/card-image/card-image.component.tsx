@@ -1,9 +1,10 @@
 import { CardProps } from "../../../types";
+import "./card-image.scss";
 
-const CardImage = ({ image }: CardProps) => {
+const CardImage = ({ image, title }: CardProps) => {
   return (
-    <div>
-      <img src={image} />
+    <div className="card-image">
+      <img src={image} alt={title} />
     </div>
   );
 };
