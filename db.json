@@ -1,5 +1,5 @@
 {
-    "games" : [
+    "games": [
         {
             "title": "Assassin's Creed Valhalla",
             "description": "Experience the epic Viking saga in Assassin's Creed Valhalla. Explore a dynamic and beautiful open world as Eivor, a fierce Viking warrior, and lead your clan to glory and prosperity. Engage in intense combat, build alliances, and conquer England in this action-packed adventure.",
@@ -88,7 +88,7 @@
             "title": "Pokémon Sword and Shield",
             "description": "Embark on a journey to become a Pokémon Champion in Pokémon Sword and Shield. Explore the Galar region, catch and train new Pokémon, and compete in exciting battles against other trainers. With stunning visuals and new gameplay features, this game offers a fresh take on the beloved Pokémon franchise.",
             "price": "59.99",
-            "image": "https"
+            "image": "https://images.unsplash.com/photo-1605979257913-1704eb7b6246?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
         }
     ]
 }

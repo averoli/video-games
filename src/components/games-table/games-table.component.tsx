@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-
+import Card from "../card/card.component";
+import { CardProps } from "../../types";
+import "./games-table.scss";
 
 const GamesTable = () => {
-  const [games, setGames] = useState([]);
-  console.log(games);
+  const [games, setGames] = useState<CardProps[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -12,7 +13,10 @@ const GamesTable = () => {
           "https://my-json-server.typicode.com/averoli/video-games/games"
         );
         const json = await response.json();
-        const data = json.games;
+        if (!json || !Array.isArray(json)) {
+          throw new Error("Invalid data structure");
+        }
+        const data = json;
         setGames(data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -21,7 +25,13 @@ const GamesTable = () => {
     fetchData();
   }, []);
 
-  return <div>GamesTable</div>;
+  return (
+    <div className="games-container">
+      {games.map((game, id) => (
+        <Card key={id} game={game} />
+      ))}
+    </div>
+  );
 };
 
 export default GamesTable;

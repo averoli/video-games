@@ -1,8 +1,8 @@
-import React from 'react'
+import './header.scss'
 
 const Header = () => {
   return (
-    <div>Header</div>
+    <h4 className='header-page'>BESTSELLERS</h4>
   )
 }
 
