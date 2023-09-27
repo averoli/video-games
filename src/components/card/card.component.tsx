@@ -1,19 +1,44 @@
+import { Link } from "react-router-dom";
 import "./card.scss";
+import { currency } from "../../App";
 import { GamesProps } from "../../types";
-import CardHeader from "./card-header/card.header.component";
-import CardImage from "./card-image/card-image.component";
-import CardPrice from "./card-price/card-price.component";
+import Button from "../button/button.component";
 
-const Card = ({ game }: GamesProps) => {
+const Card = ({ game, id }: GamesProps & { id: number }) => {
+  const { title, price, description, image } = game;
+
+  const handleClickBuy = (id: number) => {
+    alert(`Buy ${id}`);
+  };
+
+  const handleClickDetails = (id: number) => {
+    alert(`Ver details ${id}`);
+  };
+
   return (
     <div className="card">
-      <CardImage image={game.image} title={game.title}/>
-      <div className="card-footer">
-      <div className="card-footer__block">
-        <CardHeader title={game.title} />
-        <CardPrice price={game.price} />
+      <div className="card-image">
+        <img src={image} alt={title} />
       </div>
-      <button>Buy</button>
+
+      <div className="card-footer">
+        <div className="card-footer__block">
+          <p className="card-header">{title}</p>
+          <p className="card-price">
+            {price} {currency}
+          </p>
+        </div>
+        <div className="card-footer__block-buttons">
+          <Link
+            to={`/video-games/${id}`}
+            key={id}
+            state={{ from: { id, title, price, description, image } }}
+          >
+            <Button onClick={() => handleClickDetails(id)}>VER DETAILS</Button>
+          </Link>
+
+          <Button onClick={() => handleClickBuy(id)}>BUY NOW</Button>
+        </div>
       </div>
     </div>
   );

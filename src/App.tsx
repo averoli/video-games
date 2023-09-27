@@ -1,13 +1,17 @@
-import "./App.scss";
-import Header from "./components/header/header.component";
-import GamesTable from "./components/games-table/games-table.component";
+import { Routes, Route } from "react-router-dom";
+import Home from "./home/home";
+import GameDetails from "./components/game-details/game-details.component";
+
+export const currency = "USD";
 
 function App() {
   return (
-    <div className="app">
-      <Header />
-      <GamesTable />
-    </div>
+    <Routes>
+      <Route path="*" element={<div>404 NOT FOUND</div>} />
+
+      <Route path="video-games" element={<Home />} />
+      <Route path="video-games/:id" element={<GameDetails />} />
+    </Routes>
   );
 }
 
