@@ -12,7 +12,7 @@ const Card = ({ game, id }: GamesProps & { id: number }) => {
   };
 
   const handleClickDetails = (id: number) => {
-    alert(`Ver details ${id}`);
+    console.log(id);
   };
 
   return (

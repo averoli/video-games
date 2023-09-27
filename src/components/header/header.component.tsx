@@ -1,8 +1,7 @@
-import './header.scss'
 
 const Header = () => {
   return (
-    <h4 className='header-page'>BESTSELLERS</h4>
+    <h4>BESTSELLERS</h4>
   )
 }
 

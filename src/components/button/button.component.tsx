@@ -3,7 +3,7 @@ import { ButtonProps } from "../../types";
 
 const Button = ({ children, onClick }: ButtonProps) => {
   const buttonText = children;
-  let cardButton = "button";
+  let cardButton;
 
   switch (children) {
     case "BUY NOW":
@@ -18,6 +18,19 @@ const Button = ({ children, onClick }: ButtonProps) => {
     default:
       break;
   }
+
+//   interface CardButton{
+//     "BUY NOW": string,
+//     "INSTALL GAME": string,
+//     "VER DETAILS": string
+//   }
+// const CARD_BUTTON_COLOR: CardButton = {
+//   "BUY NOW": "blue-button",
+//   "INSTALL GAME": "blue-button",
+//   "VER DETAILS": "yellow-button"
+// }
+
+// cardButton = CARD_BUTTON_COLOR[children]
 
   return (
     <button onClick={onClick} className={cardButton}>
