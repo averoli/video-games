@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import "./card.scss";
-import { currency } from "../../App";
+import { currency } from "../../globals";
 import { GamesProps } from "../../types";
 import Button from "../button/button.component";
 
 const Card = ({ game, id }: GamesProps & { id: number }) => {
-  const { title, price, description, image } = game;
+  const { title, price, image } = game;
 
   const handleClickBuy = (id: number) => {
     alert(`Buy ${id}`);
@@ -29,11 +29,7 @@ const Card = ({ game, id }: GamesProps & { id: number }) => {
           </p>
         </div>
         <div className="card-footer__block-buttons">
-          <Link
-            to={`/video-games/${id}`}
-            key={id}
-            state={{ from: { id, title, price, description, image } }}
-          >
+          <Link to={`/video-games/${id}`} key={id} state={{ game }}>
             <Button onClick={() => handleClickDetails(id)}>VER DETAILS</Button>
           </Link>
 

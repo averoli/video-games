@@ -1,4 +1,5 @@
 export interface CardProps {
+  newRelease: boolean;
   title: string;
   description: string;
   price: string;

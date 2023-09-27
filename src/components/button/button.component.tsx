@@ -9,6 +9,9 @@ const Button = ({ children, onClick }: ButtonProps) => {
     case "BUY NOW":
       cardButton = "blue-button";
       break;
+    case "INSTALL GAME":
+      cardButton = "blue-button";
+      break;
     case "VER DETAILS":
       cardButton = "yellow-button";
       break;

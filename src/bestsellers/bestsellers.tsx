@@ -1,13 +1,14 @@
 import Header from "../components/header/header.component";
 import GamesTable from "../components/games-table/games-table.component";
-import "./home.scss";
-const Home = () => {
+import "./bestsellers.scss";
+
+const Bestsellers = () => {
   return (
-    <div className="home">
+    <div className="bestsellers">
       <Header />
       <GamesTable />
     </div>
   );
 };
 
-export default Home;
+export default Bestsellers;
