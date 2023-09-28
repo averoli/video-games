@@ -8,9 +8,6 @@ const GamesTable = () => {
 
   console.log(games);
 
-  const URL =
-    "https://api.rawg.io/api/games?key=c4f05046bcc343e484205ef4e3bc5473";
-
   // const fetchData = async () => {
   //   try {
   //     const response = await fetch(
@@ -28,8 +25,8 @@ const GamesTable = () => {
   // };
 
   const fetchDataPromise = () => {
-    // fetch("https://my-json-server.typicode.com/averoli/video-games/games")
-    fetch(URL)
+    fetch("https://my-json-server.typicode.com/averoli/video-games/games")
+    
       .then((response) => {
         if (!response.ok) {
           throw new Error("HTTP error!");
@@ -37,7 +34,7 @@ const GamesTable = () => {
         return response.json();
       })
       .then((json) => {
-        const data = json.results;
+        const data = json;
         setGames(data);
       })
       .catch((error) => {
