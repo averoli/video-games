@@ -17,3 +17,11 @@ export type ButtonProps = {
 export interface CardButton{
   [key: string]: string
 } 
+
+export interface BannerProps {
+  banner:{
+    title: string;
+    description: string;
+    image: string;
+  }
+}

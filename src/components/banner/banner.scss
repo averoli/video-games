@@ -1,24 +1,44 @@
 .bunner-container {
+  position: relative;
   display: flex;
   align-items: center;
-  min-width: 100%;
-  height: 300px;
-  padding-left: 60px;
-  background-color: aqua;
-  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  margin-bottom: 20px;
 }
 
-.bunner-content {
-  display: flex;
-  flex-direction: column;
- 
+.bunner-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1;
 }
-
 .bunner-container img {
   position: absolute;
   top: 0;
   left: 0;
   max-width: 100%;
-  height: 300px;
+  object-fit: cover;
+}
 
+.bunner-content {
+  position: absolute;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(20%, -50%);
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  z-index: 2;
+}
+.bunner-content p {
+  font-size: 0.7em;
+  padding-bottom: 0.3em;
+  opacity: 0.8;
 }
