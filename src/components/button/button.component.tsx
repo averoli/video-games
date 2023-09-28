@@ -3,9 +3,6 @@ import { ButtonProps } from "../../types";
 import { CARD_BUTTON_COLOR } from "../../globals";
 
 const Button = ({ children, onClick }: ButtonProps) => {
-
- 
-
   // switch (children) {
   //   case "BUY NOW":
   //     cardButton = "blue-button";
@@ -20,12 +17,13 @@ const Button = ({ children, onClick }: ButtonProps) => {
   //     break;
   // }
 
-
-  const cardButton = CARD_BUTTON_COLOR[children];
+  const CARD_BUTTON_DEFAULT = "blue-button";
+  
+  const cardButton = CARD_BUTTON_COLOR[children] || CARD_BUTTON_DEFAULT;
 
   return (
     <button onClick={onClick} className={cardButton}>
-      {cardButton}
+      {children}
     </button>
   );
 };

@@ -1,0 +1,24 @@
+.bunner-container {
+  display: flex;
+  align-items: center;
+  min-width: 100%;
+  height: 300px;
+  padding-left: 60px;
+  background-color: aqua;
+  position: relative;
+}
+
+.bunner-content {
+  display: flex;
+  flex-direction: column;
+ 
+}
+
+.bunner-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  height: 300px;
+
+}
