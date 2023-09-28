@@ -13,3 +13,7 @@ export type ButtonProps = {
   onClick: () => void;
   children: string;
 };
+
+export interface CardButton{
+  [key: string]: string
+} 
