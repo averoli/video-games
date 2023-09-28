@@ -1,11 +1,12 @@
-import Header from "../components/header/header.component";
+
 import GamesTable from "../components/games-table/games-table.component";
 import "./bestsellers.scss";
+import Bunner from "../components/banner/banner.component";
 
 const Bestsellers = () => {
   return (
     <div className="bestsellers">
-      <Header />
+      <Bunner />
       <GamesTable />
     </div>
   );

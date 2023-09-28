@@ -67,6 +67,10 @@ button:focus-visible {
   background-color: rgb(69, 69, 1);
 }
 
+.grey-button {
+background-color: grey;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     color: #ffffff;
