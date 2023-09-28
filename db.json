@@ -112,7 +112,18 @@
             "title": "God of War",
             "description": "Unleash your rage in God of War. Play as Kratos, a Spartan warrior, as he embarks on a quest for vengeance against the gods of Olympus. With brutal combat, epic boss battles, and a gripping story, this game is a must-play for action-adventure enthusiasts.",
             "price": "39.99",
-            "image": "https://images.unsplash.com/photo-1605979257913-1704eb7b6246?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+            "image": "https://images.unsplash.com/photo-1605979257913-1704eb7b6246?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+            "features": [
+                {
+                    "content": "Battle against friends or AI in intense multiplayer matches"
+                },
+                {
+                    "content": "Unlock and play as iconic video game characters"
+                },
+                {
+                    "content": "Experience a wide range of stages and game modes"
+                }
+            ]
         },
         {
             "title": "Minecraft",
