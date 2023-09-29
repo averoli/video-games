@@ -14,14 +14,10 @@ export type ButtonProps = {
   children: string;
 };
 
-export interface CardButton{
-  [key: string]: string
-} 
+export interface CardButton {
+  [key: string]: string;
+}
 
 export interface BannerProps {
-  banner:{
-    title: string;
-    description: string;
-    image: string;
-  }
+  banner: { title: string; description: string; image: string };
 }

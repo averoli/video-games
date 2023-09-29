@@ -1,0 +1,22 @@
+.slider-container {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  height: 100px;
+}
+
+.slider {
+  display: none;
+}
+
+.active {
+  width: 100%;
+  height: 100%;
+}
+
+.bg-pink {
+  background-color: palevioletred;
+}
+.bg-orange {
+  background-color: orangered;
+}
