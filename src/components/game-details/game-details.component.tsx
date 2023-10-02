@@ -3,6 +3,7 @@ import "./game-details.scss";
 import Button from "../button/button.component";
 import { SiSemanticrelease } from "react-icons/si";
 import { currency } from "../../globals";
+import { Feature } from "../../types";
 
 const GameDetails = () => {
   const location = useLocation();
@@ -12,11 +13,23 @@ const GameDetails = () => {
     return <div>Game not found</div>;
   }
 
-  const { title, price, description, image } = game;
+  const { title, price, description, image, features } = game;
 
   const handleInstallGame = () => {
     alert("Install game");
   };
+
+  const featuresList = () => {
+    return (
+      <>
+        {features &&
+          features.map((feature: Feature, i: number) => (
+            <li key={i}>{feature.content}</li>
+          ))}
+      </>
+    );
+  };
+  const list = featuresList();
 
   return (
     <div className="game-details-container">
@@ -27,12 +40,17 @@ const GameDetails = () => {
         </div>
         <h2>{title}</h2>
         <div className="game-details__block-price">
-          <h3>{price} {currency}</h3>
+          <h3>
+            {price} {currency}
+          </h3>
           <Button onClick={handleInstallGame}>INSTALL GAME</Button>
         </div>
         <div className="game-details__block-description">
           <img src={image} alt={title} />
-          <p>{description}</p>
+          <div className="game-details_text">
+            <p>{description}</p>
+            <ul>{list}</ul>
+          </div>
         </div>
       </div>
     </div>

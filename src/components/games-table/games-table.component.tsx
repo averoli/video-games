@@ -6,8 +6,6 @@ import "./games-table.scss";
 const GamesTable = () => {
   const [games, setGames] = useState<CardProps[]>([]);
 
-  console.log(games);
-
   // const fetchData = async () => {
   //   try {
   //     const response = await fetch(
@@ -26,7 +24,6 @@ const GamesTable = () => {
 
   const fetchDataPromise = () => {
     fetch("https://my-json-server.typicode.com/averoli/video-games/games")
-    
       .then((response) => {
         if (!response.ok) {
           throw new Error("HTTP error!");

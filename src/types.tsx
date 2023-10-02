@@ -1,9 +1,14 @@
+export interface Feature {
+  content: string;
+}
+
 export interface CardProps {
   newRelease: boolean;
   title: string;
   description: string;
   price: string;
   image: string;
+  features?: Feature;
 }
 export interface GamesProps {
   game: CardProps;
@@ -21,3 +26,4 @@ export interface CardButton {
 export interface BannerProps {
   banner: { title: string; description: string; image: string };
 }
+
