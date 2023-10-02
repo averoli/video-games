@@ -1,5 +1,6 @@
 .card {
   padding: 0.3rem 0;
+  position: relative;
 }
 
 .card-image img {
@@ -7,6 +8,13 @@
   border-radius: 10px;
 }
 
+.favorite-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 3%;
+  z-index: 1;
+}
 .card-footer__block {
   display: flex;
   justify-content: space-between;

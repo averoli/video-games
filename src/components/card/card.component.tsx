@@ -3,8 +3,14 @@ import "./card.scss";
 import { currency } from "../../globals";
 import { GamesProps } from "../../types";
 import Button from "../button/button.component";
+import { MdFavoriteBorder, MdFavorite } from "react-icons/Md";
 
-const Card = ({ game, id }: GamesProps & { id: number }) => {
+const Card = ({
+  game,
+  id,
+}: GamesProps & { id: number } & { isFavorite: boolean } & {
+  changeFavorite: () => void;
+}) => {
   const { title, price, image } = game;
 
   const handleClickBuy = (id: number) => {
@@ -18,6 +24,9 @@ const Card = ({ game, id }: GamesProps & { id: number }) => {
   return (
     <div className="card">
       <div className="card-image">
+        <div className="favorite-icon">
+         {isFavorite? (<MdFavorite />): <MdFavoriteBorder style={{ color: "#dc1524", fontSize: "1.5em" }} />}      
+        </div>
         <img src={image} alt={title} />
       </div>
 

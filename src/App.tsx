@@ -10,8 +10,6 @@ function App() {
       <Route path="video-games" element={<Bestsellers />} />
       <Route path="video-games/:id" element={<GameDetails />} />
       <Route path="favorite" element={<Favorite />} />
-      
-
     </Routes>
   );
 }
