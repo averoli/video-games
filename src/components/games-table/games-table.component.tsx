@@ -5,11 +5,6 @@ import "./games-table.scss";
 
 const GamesTable = () => {
   const [games, setGames] = useState<CardProps[]>([]);
-  const [isFavorite, setFavorite] = useState(false);
-
-const handleFavorite = () => {
-  setFavorite(prevState => !prevState)
-}
 
   // const fetchData = async () => {
   //   try {
@@ -52,7 +47,7 @@ const handleFavorite = () => {
   return (
     <div className="games-container">
       {games.map((game, id) => (
-        <Card key={id} game={game} id={id} isFavorite={isFavorite} changeFavorite={handleFavorite}/>
+        <Card key={id} game={game}  />
       ))}
     </div>
   );

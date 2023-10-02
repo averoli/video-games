@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./card.scss";
 import { currency } from "../../globals";
@@ -5,14 +6,18 @@ import { GamesProps } from "../../types";
 import Button from "../button/button.component";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/Md";
 
-const Card = ({
-  game,
-  id,
-}: GamesProps & { id: number } & { isFavorite: boolean } & {
-  changeFavorite: () => void;
-}) => {
-  const { title, price, image } = game;
+const Card = ({ game }: GamesProps) => {
+  const { id, title, price, image } = game;
+  console.log("game",  game);
+  
+  const [isFavorite, setFavorite] = useState<boolean>(false);
 
+  const toggleFavorite = () => {
+    setFavorite((prevState) => !prevState);
+    console.log(id);
+    
+    localStorage.setItem(`favorite_${id}`, isFavorite.toString());
+  };
   const handleClickBuy = (id: number) => {
     alert(`Buy ${id}`);
   };
@@ -24,8 +29,12 @@ const Card = ({
   return (
     <div className="card">
       <div className="card-image">
-        <div className="favorite-icon">
-         {isFavorite? (<MdFavorite />): <MdFavoriteBorder style={{ color: "#dc1524", fontSize: "1.5em" }} />}      
+        <div className="favorite-icon" onClick={toggleFavorite}>
+          {isFavorite ? (
+            <MdFavorite style={{ color: "#dc1524", fontSize: "1.5em" }} />
+          ) : (
+            <MdFavoriteBorder style={{ color: "#dc1524", fontSize: "1.5em" }} />
+          )}
         </div>
         <img src={image} alt={title} />
       </div>

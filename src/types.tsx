@@ -3,6 +3,7 @@ export interface Feature {
 }
 
 export interface CardProps {
+  id: number;
   newRelease: boolean;
   title: string;
   description: string;
@@ -26,4 +27,3 @@ export interface CardButton {
 export interface BannerProps {
   banner: { title: string; description: string; image: string };
 }
-
