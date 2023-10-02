@@ -1,8 +1,16 @@
+import { useState, useEffect } from "react";
 
 const Favorite = () => {
-  return (
-    <div>Favorite</div>
-  )
-}
+ 
 
-export default Favorite
+   useEffect(() => {
+  console.log(localStorage);
+   }, []);
+ 
+ 
+ 
+
+  return <div>Favorite</div>;
+};
+
+export default Favorite;

@@ -8,15 +8,16 @@ import { MdFavoriteBorder, MdFavorite } from "react-icons/Md";
 
 const Card = ({ game }: GamesProps) => {
   const { id, title, price, image } = game;
-  console.log("game",  game);
-  
+
   const [isFavorite, setFavorite] = useState<boolean>(false);
 
   const toggleFavorite = () => {
-    setFavorite((prevState) => !prevState);
-    console.log(id);
+    setFavorite(!isFavorite);
+    localStorage.setItem("favorite", `favorite_${id}`);
+    if (isFavorite === true) {
+      localStorage.removeItem(`favorite_${id}`);
+    }
     
-    localStorage.setItem(`favorite_${id}`, isFavorite.toString());
   };
   const handleClickBuy = (id: number) => {
     alert(`Buy ${id}`);
