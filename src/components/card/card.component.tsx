@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { GamesProps } from "../../types";
 import Button from "../button/button.component";
-import { StoredGame } from "../../types";
+import { FavoriteGame } from "../../types";
 import { currency } from "../../globals";
 
 import { MdFavoriteBorder, MdFavorite } from "react-icons/Md";
@@ -18,15 +18,15 @@ const Card = ({ game }: GamesProps) => {
     ? JSON.parse(storedFavoriteGamesJSON)
     : [];
 
-  const addFavoriteGame = (game: StoredGame) => {
-    const newGame: StoredGame = {...game, favorite: true};
+  const addFavoriteGame = (game: FavoriteGame) => {
+    const newGame: FavoriteGame = {...game, favorite: true};
     storedFavoriteGames.push(newGame);
     localStorage.setItem("favoriteGames", JSON.stringify(storedFavoriteGames));
   };
 
   const removeFavoriteGame = (gameId: number) => {
     const updateFavoriteGames = storedFavoriteGames.filter(
-      (item: StoredGame) => item.id !== gameId
+      (item: FavoriteGame) => item.id !== gameId
     );
     localStorage.setItem("favoriteGames", JSON.stringify(updateFavoriteGames));
   };

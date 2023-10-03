@@ -28,7 +28,7 @@ export interface BannerProps {
   banner: { title: string; description: string; image: string };
 }
 
-export interface StoredGame {
+export interface FavoriteGame {
   id: number;
   newRelease: boolean;
   title: string;
