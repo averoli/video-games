@@ -1,20 +1,40 @@
-import { createContext, useEffect } from "react";
+import {
+  createContext,
+  useEffect,
+  useState,
+  useContext,
+  ReactNode,
+} from "react";
 
-export const FavoriteContext = createContext({});
+interface FavoriteProviderProps {
+  children: ReactNode;
+}
+const FavoriteContext = createContext({});
 
-export const FavoriteProvider = ({ children }) => {
-  const getLocalStorage = (key: string) => {
-    const data = localStorage.getItem(key);
-    const storedGames = data ? JSON.parse(data) : [];
-    return storedGames;
-  };
-  const initData = getLocalStorage("favoriteGames");
+export const useFavoriteContex = () => {
+  const context = useContext(FavoriteContext);
+  if (!context) {
+    throw new Error("Error ...");
+  }
+  return context;
+};
+
+export const FavoriteProvider = ({ children }: FavoriteProviderProps) => {
+  const [favorileList, setFavoriteList] = useState([]);
+  console.log(favorileList);
+
   useEffect(() => {
-    localStorage.setItem("favoriteGames", JSON.stringify(initData));
-  }, [initData]);
+    const data = localStorage.getItem("favoriteGames");
+    const favoriteGames = data ? JSON.parse("favoriteGames") : [];
+    setFavoriteList(favoriteGames);
+  }, []);
+
+//   useEffect(() => {
+//     localStorage.setItem("favoriteGames", JSON.stringify(favorileList));
+//   }, [favorileList]);
 
   return (
-    <FavoriteContext.Provider value={{ initData }}>
+    <FavoriteContext.Provider value={{ favorileList }}>
       {children}
     </FavoriteContext.Provider>
   );
