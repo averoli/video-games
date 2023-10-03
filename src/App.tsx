@@ -1,12 +1,7 @@
-import { FavoriteProvider } from "./games-context";
 import Routers from "./routes";
 
 function App() {
-  return (
-    <FavoriteProvider>
-      <Routers />
-    </FavoriteProvider>
-  );
+  return <Routers></Routers>;
 }
 
 export default App;

@@ -36,4 +36,5 @@ export interface StoredGame {
   price: string;
   image: string;
   features?: Feature;
+  favorite?: boolean;
 }
