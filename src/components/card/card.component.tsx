@@ -5,30 +5,21 @@ import { currency } from "../../globals";
 import { GamesProps } from "../../types";
 import Button from "../button/button.component";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/Md";
+import { useFavorite } from "../../games-context";
 
 const Card = ({ game }: GamesProps) => {
   const { id, title, price, image } = game;
 
-  const [isFavorite, setFavorite] = useState<boolean>(false);
+  const { addFavoriteGame, removeFavoriteGame, isFavorite } = useFavorite();
 
   const toggleFavorite = () => {
-    const storedFavoriteGamesJSON = localStorage.getItem("favoriteGames");
-    const storedFavoriteGames = storedFavoriteGamesJSON
-      ? JSON.parse(storedFavoriteGamesJSON)
-      : [];
-    setFavorite(!isFavorite);
     if (!isFavorite) {
-      const newGame = game;
-      storedFavoriteGames.push(newGame);
-      localStorage.setItem(
-        "favoriteGames",
-        JSON.stringify(storedFavoriteGames)
-      );
+       addFavoriteGame(game);
     } else {
-      const gameIdToRemove = id;
-      storedFavoriteGames.filter(item => item.id !== gameIdToRemove)
+      removeFavoriteGame(id);
     }
   };
+
   const handleClickBuy = (id: number) => {
     alert(`Buy ${id}`);
   };
