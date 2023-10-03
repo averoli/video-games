@@ -1,8 +1,7 @@
+import { Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { CardProps } from "../types";
-
-const Favorite = () => {
-  const [favoriteGamesData, setFavoriteGames] = useState<CardProps[]>([]);
+const NavBar = () => {
+  const [favoriteIcon, setFavoriteIcon] = useState("");
 
   useEffect(() => {
     const favoriteGameKeys = Object.keys(localStorage).filter((key) =>
@@ -13,17 +12,16 @@ const Favorite = () => {
       const gameData = JSON.parse(localStorage.getItem(key) || "{}");
       return { id: gameId, ...gameData };
     });
-    setFavoriteGames(favoriteGamesData);
-    console.log(favoriteGamesData);
+    setFavoriteIcon(favoriteGameKeys)
+    // setFavoriteGames(favoriteGamesData);
+    console.log("hjkl", favoriteGameKeys);
   }, []);
-
   return (
-    <div>
-      {favoriteGamesData.map((favoritGame) => (
-        <li>{favoritGame.id}</li>
-      ))}
-    </div>
+    <>
+      <div>2</div>
+      <Outlet />
+    </>
   );
 };
 
-export default Favorite;
+export default NavBar;

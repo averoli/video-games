@@ -27,3 +27,8 @@ export interface CardButton {
 export interface BannerProps {
   banner: { title: string; description: string; image: string };
 }
+
+export type storedGame = {
+  id: number;
+  name: string;
+};

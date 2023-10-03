@@ -12,12 +12,22 @@ const Card = ({ game }: GamesProps) => {
   const [isFavorite, setFavorite] = useState<boolean>(false);
 
   const toggleFavorite = () => {
+    const storedFavoriteGamesJSON = localStorage.getItem("favoriteGames");
+    const storedFavoriteGames = storedFavoriteGamesJSON
+      ? JSON.parse(storedFavoriteGamesJSON)
+      : [];
     setFavorite(!isFavorite);
-    localStorage.setItem("favorite", `favorite_${id}`);
-    if (isFavorite === true) {
-      localStorage.removeItem(`favorite_${id}`);
+    if (!isFavorite) {
+      const newGame = game;
+      storedFavoriteGames.push(newGame);
+      localStorage.setItem(
+        "favoriteGames",
+        JSON.stringify(storedFavoriteGames)
+      );
+    } else {
+      const gameIdToRemove = id;
+      storedFavoriteGames.filter(item => item.id !== gameIdToRemove)
     }
-    
   };
   const handleClickBuy = (id: number) => {
     alert(`Buy ${id}`);
@@ -51,7 +61,6 @@ const Card = ({ game }: GamesProps) => {
           <Link to={`/video-games/${id}`} key={id} state={{ game }}>
             <Button onClick={() => handleClickDetails(id)}>VER DETAILS</Button>
           </Link>
-
           <Button onClick={() => handleClickBuy(id)}>BUY NOW</Button>
         </div>
       </div>
