@@ -2,14 +2,14 @@ import { useFavorite } from "../games-context";
 import Card from "../components/card/card.component";
 
 const Favorite = () => {
-  const { favorileList } = useFavorite();
+  const { favoriteList } = useFavorite();
 
   return (
-    <>
-      {favorileList.map(((favoriteItem, id)) => (
-        <Card key={id} game={favoriteItem}  />
+    <div className="games-container">
+      {favoriteList.map((favoriteItem, id) => (
+        <Card key={id} game={favoriteItem} />
       ))}
-    </>
+    </div>
   );
 };
 
