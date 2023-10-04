@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Banner from "../banner/banner.component";
 import Button from "../button/button.component";
 
+
 const Carrousel = () => {
   const banners = [
     {
@@ -76,10 +77,11 @@ const Carrousel = () => {
   return (
     <>
       <Banner banner={activeSlide} />
-      <div className="banner-buttons">
+      {/* <div className="banner-buttons">
         <Button onClick={handlePrevSlider}>Prev</Button>
         <Button onClick={handleNextSlider}>Next</Button>
-      </div>
+        <div>{}</div>
+      </div> */}
     </>
   );
 };

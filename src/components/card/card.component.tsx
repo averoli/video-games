@@ -1,42 +1,25 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useFavorite } from "../../games-context";
 import { GamesProps } from "../../types";
 import Button from "../button/button.component";
-import { FavoriteGame } from "../../types";
+import { MdFavoriteBorder, MdFavorite } from "react-icons/Md";
+
 import { currency } from "../../globals";
 
-import { MdFavoriteBorder, MdFavorite } from "react-icons/Md";
 import "./card.scss";
 
 const Card = ({ game }: GamesProps) => {
   const { id, title, price, image } = game;
 
-  const [isFavorite, setFavorite] = useState<boolean>(false);
+  const { favoriteList, addFavoriteGame, removeFavoriteGame } = useFavorite();
 
-  const storedFavoriteGamesJSON = localStorage.getItem("favoriteGames");
-  const storedFavoriteGames = storedFavoriteGamesJSON
-    ? JSON.parse(storedFavoriteGamesJSON)
-    : [];
+  const isFavorite = favoriteList.some((item) => item.id === id);
 
-  const addFavoriteGame = (game: FavoriteGame) => {
-    const newGame: FavoriteGame = {...game, favorite: true};
-    storedFavoriteGames.push(newGame);
-    localStorage.setItem("favoriteGames", JSON.stringify(storedFavoriteGames));
-  };
-
-  const removeFavoriteGame = (gameId: number) => {
-    const updateFavoriteGames = storedFavoriteGames.filter(
-      (item: FavoriteGame) => item.id !== gameId
-    );
-    localStorage.setItem("favoriteGames", JSON.stringify(updateFavoriteGames));
-  };
   const toggleFavorite = () => {
-    setFavorite(!isFavorite);
-    if (!isFavorite) {
-      addFavoriteGame(game);
-    } else {
+    if (isFavorite) {
       removeFavoriteGame(id);
-      alert(id);
+    } else {
+      addFavoriteGame(game);
     }
   };
 

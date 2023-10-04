@@ -38,3 +38,10 @@ export interface FavoriteGame {
   features?: Feature;
   favorite?: boolean;
 }
+
+export interface PaginationProps {
+  itemsPerPage: number;
+  totalItems: number;
+  currentPage: number;
+  paginate: (pageNUmber:number) => void;
+}

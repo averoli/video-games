@@ -5,12 +5,18 @@ import {
   useContext,
   ReactNode,
 } from "react";
-import { CardProps, FavoriteGame } from "./types";
+import { FavoriteGame } from "./types";
 interface FavoriteProviderProps {
   children: ReactNode;
 }
-const FavoriteContext = createContext<{ favoriteList: FavoriteGame[] }>({
+const FavoriteContext = createContext<{
+  favoriteList: FavoriteGame[];
+  addFavoriteGame: (game: FavoriteGame) => void;
+  removeFavoriteGame: (gameId: number) => void;
+}>({
   favoriteList: [],
+  addFavoriteGame: () => {},
+  removeFavoriteGame: () => {},
 });
 
 export const useFavorite = () => {
@@ -22,14 +28,15 @@ export const useFavorite = () => {
 };
 
 export const FavoriteProvider = ({ children }: FavoriteProviderProps) => {
-  const [favoriteList, setFavoriteList] = useState<FavoriteGame[]>([]);
-  console.log(favoriteList);
+
+  const data = localStorage.getItem("favoriteGames");
+  const initFavoriteList = data ? JSON.parse(data) : [];
+
+  const [favoriteList, setFavoriteList] = useState<FavoriteGame[]>(initFavoriteList);
 
   useEffect(() => {
-    const data = localStorage.getItem("favoriteGames");
-    const favoriteGames = data ? JSON.parse(data) : [];
-    setFavoriteList(favoriteGames);
-  }, []);
+    localStorage.setItem("favoriteGames", JSON.stringify(favoriteList));
+  }, [favoriteList]);
 
   const addFavoriteGame = (game: FavoriteGame) => {
     const newGame: FavoriteGame = { ...game, favorite: true };
@@ -38,17 +45,15 @@ export const FavoriteProvider = ({ children }: FavoriteProviderProps) => {
 
   const removeFavoriteGame = (gameId: number) => {
     const updatedFavoriteGame = favoriteList.filter(
-      (game) => game.id === gameId
+      (game) => game.id !== gameId
     );
     setFavoriteList(updatedFavoriteGame);
   };
 
-  //   useEffect(() => {
-  //     localStorage.setItem("favoriteGames", JSON.stringify(favorileList));
-  //   }, [favorileList]);
-
   return (
-    <FavoriteContext.Provider value={{ favoriteList, addFavoriteGame, removeFavoriteGame }}>
+    <FavoriteContext.Provider
+      value={{ favoriteList, addFavoriteGame, removeFavoriteGame }}
+    >
       {children}
     </FavoriteContext.Provider>
   );

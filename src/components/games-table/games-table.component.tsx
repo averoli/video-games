@@ -2,10 +2,14 @@ import { useState, useEffect } from "react";
 import Card from "../card/card.component";
 import { CardProps } from "../../types";
 import "./games-table.scss";
+import Pagination from "../pagination/pagination.component";
 
 const GamesTable = () => {
   const [games, setGames] = useState<CardProps[]>([]);
+  const [search, setSearch] = useState("");
 
+  const [currentPage, setCurrentePage] = useState(1);
+  const itemsPerPage = 6;
   // const fetchData = async () => {
   //   try {
   //     const response = await fetch(
@@ -44,11 +48,39 @@ const GamesTable = () => {
     fetchDataPromise();
   }, []);
 
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const searchQuery = event.target.value;
+    setSearch(searchQuery);
+  };
+
+  const filteredGames = games.filter((game) => {
+    return game.title.toLocaleLowerCase().includes(search.toLowerCase());
+  });
+
+  const paginate = (pageNumber: number) => setCurrentePage(pageNumber);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = games.slice(indexOfFirstItem, indexOfLastItem);
+
   return (
     <div className="games-container">
-      {games.map((game, id) => (
-        <Card key={id} game={game}  />
-      ))}
+      <input
+        type="search"
+        placeholder="Search"
+        className="games-container__search"
+        onChange={handleSearchChange}
+      />
+      <div className="games-wrapper">
+        {filteredGames.map((game, id) => (
+          <Card key={id} game={currentItems} />
+        ))}
+      </div>
+      <Pagination
+        itemsPerPage={itemsPerPage}
+        totalItems={games.length}
+        currentPage={currentPage}
+        paginate={paginate}
+      />
     </div>
   );
 };

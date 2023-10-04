@@ -1,0 +1,19 @@
+.navbar {
+  position: sticky;
+}
+
+.navbar ul {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+}
+
+.navbar-right {
+  display: flex;
+  width: 8%;
+  justify-content: space-between;
+}
+
+.nnavbar-right__quantity {
+  color: white;
+}

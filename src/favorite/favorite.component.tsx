@@ -6,9 +6,13 @@ const Favorite = () => {
 
   return (
     <div className="games-container">
-      {favoriteList.map((favoriteItem, id) => (
-        <Card key={id} game={favoriteItem} />
-      ))}
+      {favoriteList.length === 0 ? (
+        <h4>No favorite game.</h4>
+      ) : (
+        favoriteList.map((favoriteItem, id) => (
+          <Card key={id} game={favoriteItem} />
+        ))
+      )}
     </div>
   );
 };
