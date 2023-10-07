@@ -1,32 +1,17 @@
 import { useState, useEffect } from "react";
-import Card from "../card/card.component";
 import { CardProps } from "../../types";
-import "./games-table.scss";
+import Card from "../card/card.component";
 import Pagination from "../pagination/pagination.component";
+
+import "./games-table.scss";
 
 const GamesTable = () => {
   const [games, setGames] = useState<CardProps[]>([]);
-  const [search, setSearch] = useState("");
-
+  const [filteredGames, setFilteredGames] = useState<CardProps[]>([]);
   const [currentPage, setCurrentePage] = useState(1);
   const itemsPerPage = 6;
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await fetch(
-  //       "https://my-json-server.typicode.com/averoli/video-games/games"
-  //     );
-  //     const json = await response.json();
-  //     if (!json || !Array.isArray(json)) {
-  //       throw new Error("Invalid data structure");
-  //     }
-  //     const data = json;
-  //     setGames(data);
-  //   } catch (error) {
-  //     console.error("Error fetching data:", error);
-  //   }
-  // };
 
-  const fetchDataPromise = () => {
+   const fetchDataPromise = () => {
     fetch("https://my-json-server.typicode.com/averoli/video-games/games")
       .then((response) => {
         if (!response.ok) {
@@ -37,6 +22,7 @@ const GamesTable = () => {
       .then((json) => {
         const data = json;
         setGames(data);
+        setFilteredGames(data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -49,18 +35,20 @@ const GamesTable = () => {
   }, []);
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const searchQuery = event.target.value;
-    setSearch(searchQuery);
+    setFilteredGames(
+      games.filter((game) => {
+        return game.title
+          .toLocaleLowerCase()
+          .includes(event.target.value.toLowerCase());
+      })
+    );
+    setCurrentePage(1);
   };
-
-  const filteredGames = games.filter((game) => {
-    return game.title.toLocaleLowerCase().includes(search.toLowerCase());
-  });
 
   const paginate = (pageNumber: number) => setCurrentePage(pageNumber);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = games.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = filteredGames.slice(indexOfFirstItem, indexOfLastItem);
 
   return (
     <div className="games-container">
@@ -70,14 +58,14 @@ const GamesTable = () => {
         className="games-container__search"
         onChange={handleSearchChange}
       />
-      <div className="games-wrapper">
-        {filteredGames.map((game, id) => (
-          <Card key={id} game={currentItems} />
+      <div className="games-wrapper" data-testid="games-list">
+        {currentItems.map((game, id) => (
+          <Card key={id} game={game} />
         ))}
       </div>
       <Pagination
         itemsPerPage={itemsPerPage}
-        totalItems={games.length}
+        totalItems={filteredGames.length}
         currentPage={currentPage}
         paginate={paginate}
       />

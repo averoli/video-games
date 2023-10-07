@@ -1,5 +1,6 @@
 import { PaginationProps } from "../../types";
 
+
 const Pagination = ({
   itemsPerPage,
   totalItems,
@@ -16,7 +17,12 @@ const Pagination = ({
       <ul>
         {pageNumbers.map((pageNumber) => (
           <li key={pageNumber}>
-            <button onClick={() => paginate(pageNumber)}>{pageNumber}</button>
+            <button
+              className={`${currentPage === pageNumber ? "active" : ""}`}
+              onClick={() => paginate(pageNumber)}
+            >
+              {pageNumber}
+            </button>
           </li>
         ))}
       </ul>

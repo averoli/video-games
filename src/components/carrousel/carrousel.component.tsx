@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import Banner from "../banner/banner.component";
-import Button from "../button/button.component";
-
+import "./carrousel.scss";
 
 const Carrousel = () => {
   const banners = [
@@ -36,7 +35,7 @@ const Carrousel = () => {
   ];
 
   const [nextSlider, setNextSlider] = useState(0);
-  const intervalRef = useRef(0);
+  const intervalRef = useRef<NodeJS.Timeout | 0>(0);
 
   const handleNextSlider = useCallback(() => {
     const changeSlider = nextSlider + 1;
@@ -66,22 +65,23 @@ const Carrousel = () => {
 
   const activeSlide = slide();
 
-  const handlePrevSlider = () => {
-    if (nextSlider > 0) {
-      for (let i = nextSlider; i > 0; i--) {
-        setNextSlider(nextSlider - 1);
-      }
-    }
+  const handleChangeDot = (indexDot: number) => {
+    setNextSlider(indexDot);
   };
-
   return (
     <>
+      <div className="banner-buttons">
+      </div>
       <Banner banner={activeSlide} />
-      {/* <div className="banner-buttons">
-        <Button onClick={handlePrevSlider}>Prev</Button>
-        <Button onClick={handleNextSlider}>Next</Button>
-        <div>{}</div>
-      </div> */}
+      <div className="dots-container">
+        {banners.map((banner, index) => (
+          <span
+            key={index}
+            className={`dot ${index === nextSlider ? "active" : ""}`}
+            onClick={() => handleChangeDot(index)}
+          ></span>
+        ))}
+      </div>
     </>
   );
 };

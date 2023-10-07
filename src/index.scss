@@ -46,6 +46,7 @@ button {
   font-size: 0.7em;
   font-weight: 400;
   font-family: inherit;
+  background-color: grey;
   color: white;
   cursor: pointer;
   transition: border-color 0.25s;
@@ -59,6 +60,9 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+button.active {
+  background-color: #242ffb;
+}
 .blue-button {
   background-color: #242ffb;
 }
@@ -71,6 +75,10 @@ button:focus-visible {
   background-color: grey;
 }
 
+input {
+  padding: 5px;
+  border-radius: 6px;
+}
 @media (prefers-color-scheme: dark) {
   :root {
     color: #ffffff;
@@ -84,7 +92,7 @@ button:focus-visible {
   }
 }
 
-@media (max-width: 500px){
+@media (max-width: 500px) {
   h1 {
     font-size: 2em;
   }
