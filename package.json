@@ -11,6 +11,9 @@
     "test": "jest --coverage"
   },
   "dependencies": {
+    "@babel/plugin-syntax-jsx": "^7.22.5",
+    "@babel/preset-env": "^7.23.2",
+    "@babel/preset-react": "^7.22.15",
     "@types/fetch-mock": "^7.3.6",
     "fetch-mock": "^9.11.0",
     "node-fetch": "^3.3.2",
