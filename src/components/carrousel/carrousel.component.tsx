@@ -74,7 +74,7 @@ const Carrousel = () => {
       </div>
       <Banner banner={activeSlide} />
       <div className="dots-container">
-        {banners.map((banner, index) => (
+        {banners.map((_banner, index) => (
           <span
             key={index}
             className={`dot ${index === nextSlider ? "active" : ""}`}
