@@ -2,6 +2,7 @@ import {useState, useEffect} from "react";
 import {CardProps} from "../../types";
 import Card from "../card/card.component";
 import Pagination from "../pagination/pagination.component";
+import fetch from 'node-fetch';
 
 import "./games-table.scss";
 
