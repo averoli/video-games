@@ -24,25 +24,24 @@ test("leventar carrousel", () => { // @note remove?
 test("there is no I in team", () => { // @note remove?
   expect("team").not.toMatch(/I/);
 });
+
 describe("Carrousel Component", () => {
-  beforeEach(() => {
-    jest.useFakeTimers();
-  });
+  jest.useFakeTimers();
   jest.runOnlyPendingTimers();
   jest.useRealTimers();
 
   test("renders the initial slide", () => {
-    render(<Carrousel />);
-    const titleElement = screen.getAllByText("Red Dead Redemption");
-    const descriptionElement = screen.getAllByText(
+    render(<Carrousel/>);
+
+    const titleElement = screen.getByText("Red Dead Redemption");
+    const descriptionElement = screen.getByText(
       "Play as Arthur Morgan, a member of the infamous Van der Linde gang, as you navigate through a vast and detailed open world"
     );
-    const imageElement = screen.getAllByText(
-      "https://media.rawg.io/media/games/021/021c4e21a1824d2526f925eff6324653.jpg"
-    );
+    const imageElement = screen.getByAltText("Red Dead Redemption");
 
     expect(titleElement).toBeInTheDocument();
     expect(descriptionElement).toBeInTheDocument();
     expect(imageElement).toBeInTheDocument();
+    expect(imageElement).toHaveAttribute('src', "https://media.rawg.io/media/games/021/021c4e21a1824d2526f925eff6324653.jpg")
   });
 });
