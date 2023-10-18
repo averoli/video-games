@@ -5,12 +5,6 @@ import fetch from "node-fetch";
 import fetchMock from "fetch-mock";
 
 describe("Game Table component", () => {
-  test('renders with success', () => {
-    render(<GamesTable/>)
-
-    expect(screen.getByTestId("games-list")).toBeInTheDocument()
-  })
-
   beforeEach(() => {
     jest.resetAllMocks()
   });
@@ -18,6 +12,12 @@ describe("Game Table component", () => {
   afterEach(() => {
     fetchMock.restore();
   });
+
+  test('renders with success', () => {
+    render(<GamesTable/>)
+
+    expect(screen.getByTestId("games-list")).toBeInTheDocument()
+  })
 
   test("render video-games when API call succeeds", () => {
     const mockVideoGames = [
