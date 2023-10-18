@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { CardProps } from "../../types";
+import {useState, useEffect} from "react";
+import {CardProps} from "../../types";
 import Card from "../card/card.component";
 import Pagination from "../pagination/pagination.component";
 
@@ -11,7 +11,7 @@ const GamesTable = () => {
   const [currentPage, setCurrentePage] = useState(1);
   const itemsPerPage = 6;
 
-   const fetchDataPromise = () => {
+  const fetchDataPromise = () => {
     fetch("https://my-json-server.typicode.com/averoli/video-games/games")
       .then((response) => {
         if (!response.ok) {
@@ -60,7 +60,7 @@ const GamesTable = () => {
       />
       <div className="games-wrapper" data-testid="games-list">
         {currentItems.map((game, id) => (
-          <Card key={id} game={game} />
+          <Card key={id} game={game}/>
         ))}
       </div>
       <Pagination
