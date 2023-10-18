@@ -1,10 +1,8 @@
-import { render, screen, fireEvent, act } from "@testing-library/react";
+import {render, screen} from "@testing-library/react";
+import {expect, jest, test} from "@jest/globals";
 import Carrousel from "./carrousel.component";
-import { expect, jest, test } from "@jest/globals";
-test("leventar carrousel", () => {
-  expect(1 + 1).toBe(2);
-});
 
+// @todo remove?
 // test("object assigment", () => {
 //   const data = { one: 1 };
 //   data['two'] = 2;
@@ -19,7 +17,11 @@ test("leventar carrousel", () => {
 //     }
 // })
 
-test("there is no I in team", () => {
+test("leventar carrousel", () => { // @note remove?
+  expect(1 + 1).toBe(2);
+});
+
+test("there is no I in team", () => { // @note remove?
   expect("team").not.toMatch(/I/);
 });
 describe("Carrousel Component", () => {
